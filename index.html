@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EVALUADOR ÉTICO // 24 PERMUTACIONES QUANT & KABBALAH TREE</title>
+    <script type="text/javascript" src="https://gc.kes.v2.scr.kaspersky-labs.com/7EA5E9BB-55E1-4C31-9C21-4943DDFED2E4/main.js?attr=nUkxlRIv_DB6aliRcUnfG2T2CvwXVGfEgRxrWJfflqkkf-Zd8ioFg1g3GowXZaH45Bo3UnL68xe3dlEPK9Qu4m2siNflpZK8FeR0CA1jXinRuAUvIJZKX4GFfW2QkkIbJ9fl44Bt2zgn1keHpGJ9Ji6u76VdcWdVeeoWrfoqjZhR2BeQneAsSjVTrAFWfLEcT0mLbfvB1CwxWY8xZWv9cEBQ5AwzUaixMUiVT-FCYnBY8pu_WbJoz7wGKOKYwf9wSw4kwvA60HVRua6bJ3HKV08l4YE4XcpiwlVu37wVh5r63HPIDytDa-jeCllAHR1I" charset="UTF-8"></script><style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600;700&display=swap');
+
+        :root {
+            --bg-dark: #030508;
+            --panel-bg: #080c14;
+            --border-color: #1a2638;
+            --text-main: #a0aec0;
+            --accent-cyan: #00f3ff;
+            --gold-main: #ffd700;
+            --color-good: #00ff66;
+            --color-bad: #ff0055;
+            --font-mono: 'Fira Code', monospace;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-mono);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 { font-size: 1rem; color: var(--accent-cyan); letter-spacing: 2px; }
+        .subtitle { font-size: 0.7rem; color: #4a5568; }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 320px 1fr 300px;
+            gap: 15px;
+            flex-grow: 1;
+        }
+
+        .panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-radius: 4px;
+            z-index: 2;
+        }
+
+        .panel-title {
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 4px;
+            letter-spacing: 1px;
+        }
+
+        .control-group { display: flex; flex-direction: column; gap: 4px; }
+        label { font-size: 0.65rem; color: #718096; text-transform: uppercase; }
+
+        select, input[type="text"] {
+            background: #0d131f;
+            border: 1px solid var(--border-color);
+            color: var(--accent-cyan);
+            padding: 6px 8px;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        input[type="text"] {
+            color: #fff;
+            border-style: dashed;
+        }
+
+        input[type="text"]::placeholder { color: #3a4a60; }
+
+        /* SENSORES CUANTITATIVOS (SLIDERS) */
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 2px;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            flex-grow: 1;
+            height: 4px;
+            background: #1a2638;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold-main);
+            cursor: pointer;
+            box-shadow: 0 0 6px var(--gold-main);
+        }
+
+        .slider-value {
+            font-size: 0.7rem;
+            color: var(--gold-main);
+            font-weight: bold;
+            min-width: 28px;
+            text-align: right;
+        }
+
+        .btn-log {
+            background: linear-gradient(135deg, #ffd700, #b8860b);
+            color: #000;
+            border: none;
+            padding: 10px;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border-radius: 2px;
+            letter-spacing: 2px;
+            transition: all 0.2s ease;
+            margin-top: 5px;
+        }
+
+        .btn-log:hover {
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
+            transform: translateY(-1px);
+        }
+
+        /* ÁRBOLES DIAGRAMÁTICO INVERTIDO (KABBALAH INVERTIDA) */
+        .tree-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 10px 0;
+            border-top: 1px dashed var(--border-color);
+            margin-top: 5px;
+        }
+
+        .tree-node {
+            background: #0a111e;
+            border: 1px solid var(--border-color);
+            padding: 6px 10px;
+            border-radius: 3px;
+            font-size: 0.65rem;
+            text-align: center;
+            width: 100%;
+            color: #a0aec0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tree-node.root {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            font-weight: bold;
+        }
+
+        .tree-node.leaf {
+            border-color: var(--gold-main);
+            color: var(--gold-main);
+            font-weight: bold;
+        }
+
+        .tree-line {
+            width: 1px;
+            height: 10px;
+            background: var(--border-color);
+        }
+
+        /* CONTENEDOR CENTRAL: CUBO 3D ADAPTATIVO */
+        .viewport {
+            position: relative;
+            background: #020305;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            min-height: 480px;
+        }
+
+        #cubeContainer {
+            width: 100%;
+            height: 100%;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .timeline-overlay {
+            width: 100%;
+            background: rgba(8, 12, 20, 0.92);
+            border-top: 1px solid var(--border-color);
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+
+        .node { display: flex; flex-direction: column; align-items: center; gap: 2px; max-width: 30%; text-align: center; }
+        .node-tag { font-size: 0.6rem; color: #4a5568; }
+        .node-val { font-size: 0.75rem; font-weight: 700; color: #fff; }
+        .node-id { font-size: 0.65rem; color: var(--gold-main); font-style: italic; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+
+        /* MATRIZ DE 24 PERMUTACIONES */
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            max-height: 420px;
+            overflow-y: auto;
+        }
+
+        .matrix-cell {
+            background: #0d131f;
+            border: 1px solid #1a2638;
+            font-size: 0.62rem;
+            padding: 8px 2px;
+            text-align: center;
+            border-radius: 2px;
+            color: #4a5568;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .matrix-cell.active {
+            border-color: var(--gold-main);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+            background: #181d10;
+        }
+
+        .matrix-cell.good { color: var(--color-good); border-color: rgba(0, 255, 102, 0.25); }
+        .matrix-cell.bad { color: var(--color-bad); border-color: rgba(255, 0, 85, 0.25); }
+
+        /* PANEL CUANTITATIVO */
+        .quant-summary {
+            background: #0a111e;
+            border: 1px solid var(--border-color);
+            padding: 10px;
+            border-radius: 3px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .quant-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.68rem;
+        }
+
+        .quant-val {
+            font-weight: bold;
+            color: var(--gold-main);
+        }
+
+        /* CANVAS MATRIX OVERLAY */
+        #matrixCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        #matrixCanvas.active { opacity: 1; }
+    </style>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <div>
+            <h1>SISTEMA_ÉTICO_GEODÉSICO // 24 PERMUTACIONES QUANT + KABBALAH TREE</h1>
+            <div class="subtitle">Análisis Cuantitativo, Probabilístico y Geodésico 3D</div>
+        </div>
+        <div id="formulaDisplay" style="color: var(--gold-main); font-size: 0.8rem;">
+            E = I + R(S) + E₂
+        </div>
+    </header>
+
+    <div class="dashboard">
+        <!-- MENÚ IZQUIERDO: CONTROLES, SENSORES Y ÁRBOL KABBALAH INVERTIDO -->
+        <div class="panel">
+            <div class="panel-title">// Variables y Sensores Cuantitativos</div>
+
+            <div class="control-group">
+                <label>1. Acto / Intención (I)</label>
+                <select id="selIntencion">
+                    <option value="IB">Beneficiosa (IB)</option>
+                    <option value="ID">Dañina (ID)</option>
+                </select>
+                <input type="text" id="idIntencion" placeholder="Identificador de la Intención...">
+            </div>
+
+            <div class="control-group">
+                <label>2. Resultado y Sensación [R(S)]</label>
+                <select id="selResultado">
+                    <option value="RB_P">Resultado Beneficioso → Placer [RB(P)]</option>
+                    <option value="RD_D">Resultado Dañino → Dolor [RD(D)]</option>
+                </select>
+                <input type="text" id="idResultado" placeholder="Identificador del Resultado(Sensación)...">
+                
+                <label style="margin-top: 4px;">Sensor de Intensidad Sensorial R(S)</label>
+                <div class="slider-container">
+                    <input type="range" id="sliderSensacion" min="0" max="10" value="5">
+                    <span class="slider-value" id="valSensacion">5.0</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>3. Efecto Posterior (E₂)</label>
+                <select id="selEfecto">
+                    <option value="EB_P">EB: Placer Neutro/Base (P)</option>
+                    <option value="EB_P_MAYOR">EB: Placer Mayor / Alegría (P>)</option>
+                    <option value="EB_P_MENOR">EB: Placer Menor (P<)</option>
+                    <option value="ED_D">ED: Dolor Neutro/Base (D)</option>
+                    <option value="ED_D_MAYOR">ED: Dolor Mayor / Tristeza (D>)</option>
+                    <option value="ED_D_MENOR">ED: Dolor Menor (D<)</option>
+                </select>
+                <input type="text" id="idEfecto" placeholder="Identificador del Efecto...">
+
+                <label style="margin-top: 4px;">Sensor de Intensidad del Efecto (E₂)</label>
+                <div class="slider-container">
+                    <input type="range" id="sliderEfecto" min="0" max="10" value="5">
+                    <span class="slider-value" id="valEfecto">5.0</span>
+                </div>
+            </div>
+
+            <!-- ÁRBOL DIAGRAMÁTICO INVERTIDO (ESTRUTURA KABBALAH) -->
+            <div class="panel-title" style="margin-top: 5px;">// Árbol Causal Invertido</div>
+            <div class="tree-container">
+                <div class="tree-node root" id="treeRoot">Raíz T₀: Acto / Intención</div>
+                <div class="tree-line"></div>
+                <div class="tree-node" id="treeMid">Nodo T₁: Resultado ⊕ Sensación</div>
+                <div class="tree-line"></div>
+                <div class="tree-node leaf" id="treeLeaf">Punta T₂: Efecto (Cascada)</div>
+            </div>
+
+            <button class="btn-log" id="btnLog">LOG [REGISTRAR ACTO]</button>
+        </div>
+
+        <!-- VISOR CENTRAL: CUBO 3D ADAPTATIVO CENTRADO Y TIMELINE -->
+        <div class="viewport">
+            <canvas id="matrixCanvas"></canvas>
+            <div id="cubeContainer"></div>
+            
+            <div class="timeline-overlay">
+                <div class="node">
+                    <span class="node-tag">T₀ : ACTO / INTENCIÓN</span>
+                    <span id="nodeI" class="node-val">IB</span>
+                    <span id="nodeIdI" class="node-id">-</span>
+                </div>
+                <div style="color: #4a5568;">⟶</div>
+                <div class="node">
+                    <span class="node-tag">T₁ : RESULTADO + SENSACIÓN</span>
+                    <span id="nodeR" class="node-val">RB(P)</span>
+                    <span id="nodeIdR" class="node-id">-</span>
+                </div>
+                <div style="color: #4a5568;">⟶</div>
+                <div class="node">
+                    <span class="node-tag">T₂ : EFECTO</span>
+                    <span id="nodeE" class="node-val">EB(P)</span>
+                    <span id="nodeIdE" class="node-id">-</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MENÚ DERECHO: MATRIZ DE 24 PERMUTACIONES Y MÉTRICAS CUANTITATIVAS -->
+        <div class="panel">
+            <div class="panel-title">// Matriz de 24 Permutaciones</div>
+            <div class="node-tag">Universo completo de permutaciones coherentes:</div>
+            <div class="matrix-grid" id="matrixGrid"></div>
+
+            <div class="panel-title" style="margin-top: 10px;">// Análisis Cuantitativo</div>
+            <div class="quant-summary">
+                <div class="quant-row">
+                    <span>Magnitud Neta Afectiva:</span>
+                    <span class="quant-val" id="qNetVal">+0.00</span>
+                </div>
+                <div class="quant-row">
+                    <span>Probabilidad de Coherencia:</span>
+                    <span class="quant-val" id="qProbVal">0.00%</span>
+                </div>
+                <div class="quant-row">
+                    <span>Factor Varianza de Riesgo:</span>
+                    <span class="quant-val" id="qRiskVal">0.00</span>
+                </div>
+                <div class="quant-row">
+                    <span>Dictamen Vectorial:</span>
+                    <span class="quant-val" id="qDictamen" style="color: var(--color-good);">POSITIVO</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // =========================================================
+        // 1. CONSTRUCCIÓN DEL ESPACIO COMPLETO DE 24 PERMUTACIONES
+        // =========================================================
+        const intenciones = ['IB', 'ID'];
+        const resultados = ['RB_P', 'RD_D'];
+        const efectos = ['EB_P', 'EB_P_MAYOR', 'EB_P_MENOR', 'ED_D', 'ED_D_MAYOR', 'ED_D_MENOR'];
+
+        const PERMUTACIONES_24 = [];
+        let pCount = 1;
+
+        intenciones.forEach(i => {
+            resultados.forEach(r => {
+                efectos.forEach(e => {
+                    // Evaluación de la validez cualitativa base
+                    let score = (i === 'IB') ? 1 : -1;
+                    score += (r === 'RB_P') ? 2 : -2;
+
+                    if (e === 'EB_P_MAYOR') score += 4;
+                    else if (e === 'EB_P') score += 2;
+                    else if (e === 'EB_P_MENOR') score += 1;
+                    else if (e === 'ED_D_MENOR') score -= 1;
+                    else if (e === 'ED_D') score -= 2;
+                    else if (e === 'ED_D_MAYOR') score -= 4;
+
+                    PERMUTACIONES_24.push({
+                        id: `P${pCount++}`,
+                        i: i,
+                        r: r,
+                        e: e,
+                        good: score >= 0,
+                        baseScore: score
+                    });
+                });
+            });
+        });
+
+        // DOM ELEMENTS
+        const selI = document.getElementById('selIntencion');
+        const selR = document.getElementById('selResultado');
+        const selE = document.getElementById('selEfecto');
+
+        const idI = document.getElementById('idIntencion');
+        const idR = document.getElementById('idResultado');
+        const idE = document.getElementById('idEfecto');
+
+        const sliderSensacion = document.getElementById('sliderSensacion');
+        const sliderEfecto = document.getElementById('sliderEfecto');
+        const valSensacion = document.getElementById('valSensacion');
+        const valEfecto = document.getElementById('valEfecto');
+
+        const nodeI = document.getElementById('nodeI');
+        const nodeR = document.getElementById('nodeR');
+        const nodeE = document.getElementById('nodeE');
+
+        const nodeIdI = document.getElementById('nodeIdI');
+        const nodeIdR = document.getElementById('nodeIdR');
+        const nodeIdE = document.getElementById('nodeIdE');
+
+        const treeRoot = document.getElementById('treeRoot');
+        const treeMid = document.getElementById('treeMid');
+        const treeLeaf = document.getElementById('treeLeaf');
+
+        const matrixGrid = document.getElementById('matrixGrid');
+        const btnLog = document.getElementById('btnLog');
+
+        const qNetVal = document.getElementById('qNetVal');
+        const qProbVal = document.getElementById('qProbVal');
+        const qRiskVal = document.getElementById('qRiskVal');
+        const qDictamen = document.getElementById('qDictamen');
+
+        // SLIDERS REAL-TIME UPDATES
+        sliderSensacion.addEventListener('input', (e) => valSensacion.innerText = parseFloat(e.target.value).toFixed(1));
+        sliderEfecto.addEventListener('input', (e) => valEfecto.innerText = parseFloat(e.target.value).toFixed(1));
+
+        // =========================================================
+        // 2. MATRIZ DE 24 PERMUTACIONES
+        // =========================================================
+        let matrixElements = [];
+
+        function initMatrix() {
+            matrixGrid.innerHTML = '';
+            PERMUTACIONES_24.forEach(p => {
+                const cell = document.createElement('div');
+                cell.className = `matrix-cell ${p.good ? 'good' : 'bad'}`;
+                cell.innerText = p.id;
+                cell.title = `${p.i} + ${p.r} + ${p.e}`;
+                
+                cell.addEventListener('click', () => {
+                    selI.value = p.i;
+                    selR.value = p.r;
+                    selE.value = p.e;
+                    syncActiveCell();
+                    updateQuantitativeMetrics();
+                });
+
+                matrixGrid.appendChild(cell);
+                matrixElements.push({ element: cell, data: p });
+            });
+        }
+
+        function getCurrentPermutation() {
+            return PERMUTACIONES_24.find(p => 
+                p.i === selI.value && 
+                p.r === selR.value && 
+                p.e === selE.value
+            ) || PERMUTACIONES_24[0];
+        }
+
+        function syncActiveCell() {
+            const current = getCurrentPermutation();
+            matrixElements.forEach(item => {
+                if (item.data.id === current.id) {
+                    item.element.classList.add('active');
+                } else {
+                    item.element.classList.remove('active');
+                }
+            });
+        }
+
+        // =========================================================
+        // 3. CÁLCULO CUANTITATIVO Y PROBABILÍSTICO
+        // =========================================================
+        function updateQuantitativeMetrics() {
+            const current = getCurrentPermutation();
+            const sSens = parseFloat(sliderSensacion.value);
+            const sEfe = parseFloat(sliderEfecto.value);
+
+            // Factor de Sensación Directa R(S)
+            const rSign = (current.r === 'RB_P') ? 1 : -1;
+            const rVal = rSign * sSens;
+
+            // Factor de Efecto Posterior E₂
+            let eSign = 1;
+            if (current.e.startsWith('ED')) eSign = -1;
+            const eVal = eSign * sEfe;
+
+            // Intención Base
+            const iVal = (current.i === 'IB') ? 2.0 : -2.0;
+
+            // Magnitud Neta Afectiva
+            const netMagnitude = iVal + rVal + (1.5 * eVal);
+
+            // Probabilidad de Coherencia Ética (Sigmoide reducida)
+            const probCoherence = 1 / (1 + Math.exp(-netMagnitude / 4));
+            const probPercent = (probCoherence * 100).toFixed(1);
+
+            // Varianza / Factor de Riesgo (Desviación entre Intención y Efecto Real)
+            const riskFactor = Math.abs(iVal - eVal).toFixed(2);
+
+            // Actualización UI
+            qNetVal.innerText = (netMagnitude >= 0 ? "+" : "") + netMagnitude.toFixed(2);
+            qNetVal.style.color = netMagnitude >= 0 ? "var(--color-good)" : "var(--color-bad)";
+
+            qProbVal.innerText = `${probPercent}%`;
+            qRiskVal.innerText = riskFactor;
+
+            const isGood = netMagnitude >= 0;
+            qDictamen.innerText = isGood ? "BIEN (COHERENTE)" : "MAL (INCOHERENTE)";
+            qDictamen.style.color = isGood ? "var(--color-good)" : "var(--color-bad)";
+
+            // Actualizar Árbol Invertido
+            treeRoot.innerText = `Raíz T₀: ${current.i} (${idI.value || 'Intención'})`;
+            treeMid.innerText = `Nodo T₁: ${current.r.replace('_', '(') + ')'} [I: ${sSens.toFixed(1)}]`;
+            treeLeaf.innerText = `Punta T₂: ${current.e.replace('_', ' ')} [I: ${sEfe.toFixed(1)}]`;
+
+            return { isGood, netMagnitude, probPercent };
+        }
+
+        // =========================================================
+        // 4. PLANO CARTESIANO 3D CENTRADO Y ADAPTATIVO (THREE.JS)
+        // =========================================================
+        let scene, camera, renderer, cubeGroup, vectorPath;
+
+        function init3DCube() {
+            const container = document.getElementById('cubeContainer');
+            scene = new THREE.Scene();
+
+            camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+            camera.position.set(3.2, 2.8, 4.0);
+
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setPixelRatio(window.devicePixelRatio);
+            container.appendChild(renderer.domElement);
+
+            cubeGroup = new THREE.Group();
+            scene.add(cubeGroup);
+
+            // Cubo Delimitador
+            const cubeGeometry = new THREE.BoxGeometry(2.4, 2.4, 2.4);
+            const cubeEdges = new THREE.EdgesGeometry(cubeGeometry);
+            const cubeMaterial = new THREE.LineBasicMaterial({ color: 0x1a2638 });
+            const cubeWireframe = new THREE.LineSegments(cubeEdges, cubeMaterial);
+            cubeGroup.add(cubeWireframe);
+
+            // Ejes Cartesiano
+            const axesHelper = new THREE.AxesHelper(1.4);
+            cubeGroup.add(axesHelper);
+
+            // Centrar cámara en el grupo
+            camera.lookAt(cubeGroup.position);
+
+            function animate() {
+                requestAnimationFrame(animate);
+                cubeGroup.rotation.y += 0.004;
+                renderer.render(scene, camera);
+            }
+            animate();
+        }
+
+        function update3DPath(metrics) {
+            if (vectorPath) cubeGroup.remove(vectorPath);
+
+            const current = getCurrentPermutation();
+            const sSens = parseFloat(sliderSensacion.value) / 10.0;
+            const sEfe = parseFloat(sliderEfecto.value) / 10.0;
+
+            // Puntos Coordenados Ajustados Cuantitativamente
+            const x1 = (current.i === 'IB') ? 0.8 : -0.8;
+            const y1 = 1.0;
+            const z1 = -1.0;
+
+            const rSign = (current.r === 'RB_P') ? 1 : -1;
+            const x2 = rSign * sSens * 1.1;
+            const y2 = 0.0;
+            const z2 = 0.0;
+
+            let eSign = 1;
+            if (current.e.startsWith('ED')) eSign = -1;
+            const x3 = eSign * sEfe * 1.1;
+            const y3 = -1.0;
+            const z3 = 1.0;
+
+            const curve = new THREE.CatmullRomCurve3([
+                new THREE.Vector3(x1, y1, z1),
+                new THREE.Vector3(x2, y2, z2),
+                new THREE.Vector3(x3, y3, z3)
+            ]);
+
+            const points = curve.getPoints(60);
+            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
+            const colorHex = metrics.isGood ? 0x00ff66 : 0xff0055;
+            const material = new THREE.LineBasicMaterial({ color: colorHex, linewidth: 3 });
+
+            vectorPath = new THREE.Line(geometry, material);
+            cubeGroup.add(vectorPath);
+        }
+
+        function onWindowResize() {
+            const container = document.getElementById('cubeContainer');
+            if (!container || !renderer || !camera) return;
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        }
+        window.addEventListener('resize', onWindowResize);
+
+        // =========================================================
+        // 5. LLUVIA DORADA MATRIX & LOG SYSTEM
+        // =========================================================
+        const matrixCanvas = document.getElementById('matrixCanvas');
+        const mCtx = matrixCanvas.getContext('2d');
+
+        function resizeMatrixCanvas() {
+            matrixCanvas.width = matrixCanvas.parentElement.clientWidth;
+            matrixCanvas.height = matrixCanvas.parentElement.clientHeight;
+        }
+
+        let matrixInterval = null;
+
+        function triggerGoldMatrix(verdictText, probText) {
+            resizeMatrixCanvas();
+            matrixCanvas.classList.add('active');
+
+            const columns = Math.floor(matrixCanvas.width / 16);
+            const drops = Array(columns).fill(1);
+            const chars = "0101010101ÉTIKA¶§ΨΩ24PERMUTAS".split("");
+
+            let frameCount = 0;
+
+            if (matrixInterval) clearInterval(matrixInterval);
+
+            matrixInterval = setInterval(() => {
+                mCtx.fillStyle = "rgba(3, 5, 8, 0.15)";
+                mCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+
+                mCtx.fillStyle = "#ffd700";
+                mCtx.font = "12px Fira Code";
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    mCtx.fillText(text, i * 16, drops[i] * 16);
+
+                    if (drops[i] * 16 > matrixCanvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+
+                mCtx.fillStyle = "#ffffff";
+                mCtx.font = "bold 20px Fira Code";
+                mCtx.textAlign = "center";
+                mCtx.shadowColor = "#ffd700";
+                mCtx.shadowBlur = 15;
+                mCtx.fillText(`DICTAMEN: ${verdictText}`, matrixCanvas.width / 2, matrixCanvas.height / 2 - 15);
+                
+                mCtx.font = "14px Fira Code";
+                mCtx.fillStyle = "#ffd700";
+                mCtx.fillText(`COHERENCIA PROBABILÍSTICA: ${probText}`, matrixCanvas.width / 2, matrixCanvas.height / 2 + 15);
+                mCtx.shadowBlur = 0;
+
+                frameCount++;
+                if (frameCount > 85) {
+                    clearInterval(matrixInterval);
+                    matrixCanvas.classList.remove('active');
+                }
+            }, 33);
+        }
+
+        // =========================================================
+        // 6. EVENTO PRINCIPAL: LOG
+        // =========================================================
+        btnLog.addEventListener('click', () => {
+            const current = getCurrentPermutation();
+            const metrics = updateQuantitativeMetrics();
+
+            // Actualizar Timeline UI
+            nodeI.innerText = current.i;
+            nodeR.innerText = current.r.replace('_', '(') + ')';
+            nodeE.innerText = current.e.replace('_', ' ');
+
+            nodeIdI.innerText = idI.value || '-';
+            nodeIdR.innerText = idR.value || '-';
+            nodeIdE.innerText = idE.value || '-';
+
+            // Actualizar Modelo 3D
+            update3DPath(metrics);
+            syncActiveCell();
+
+            // Disparar Lluvia Matrix
+            const verdict = metrics.isGood ? "ACTO CONFORME AL BIEN" : "ACTO INCOHERENTE / MAL";
+            triggerGoldMatrix(verdict, `${metrics.probPercent}%`);
+        });
+
+        // Eventos de actualización dinámica
+        [selI, selR, selE, sliderSensacion, sliderEfecto].forEach(el => {
+            el.addEventListener('change', () => {
+                syncActiveCell();
+                const metrics = updateQuantitativeMetrics();
+                update3DPath(metrics);
+            });
+        });
+
+        // INICIALIZACIÓN COMPLETA
+        initMatrix();
+        init3DCube();
+        syncActiveCell();
+        const initialMetrics = updateQuantitativeMetrics();
+        update3DPath(initialMetrics);
+    </script>
+</body>
+</html>
